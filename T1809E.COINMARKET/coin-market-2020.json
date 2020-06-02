@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "coin-market-2020",
+  "private_key_id": "ef0412c7e02953f2862ec934e03f26f8c798df27",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDf87xw+b3/p8l1\nQtI1eECqgYjiC5/qF1zb4SChWGO4IeVAFGoHn/oe+sDHOzpUScZNcNqzqPoV7Gtn\nbU14ONXQx7y3b6hKHYeH+ShNpz0LHcncDEs5c8qPIFqiCrOXepLzvCNlfLzTzEiR\nvuLb88Kuq9jY57WSaaXHerbGLgkIT7cYJmJ0mlem4R0NFJ85dwUErqhn2EtBdSQl\nIHMTPy5haKBwd0q50mCMQkQjc58g1fkaypDWy3NeVgtEDKlhj4KXyiLKoc35Rvoe\nfVzJp9RGMWrXgldn6eQWHiuQfgtQNLOsGEoqhBT2Zr3z/fyV7y1nFka4YEml3Xap\nOIqP/I/pAgMBAAECggEAAnOrLPt2+o0ONhPwtDgoURWQ95SUAB6YXCnnTwzmLpZk\naaKvlHzKYrtxD91UoqaaHq/tHQltD39in6PBNN8+bAY7yTBWQdV37eOq7sq1buE5\nHAkga7UaUx3SEDMYy0BCyptVMd+/O3xhkQLrfef5yirEeX9z6/HvKDNuO9Y2MBqW\nEf2tbVvmG+G0dAaCOpTi4AVsm0XqBW6oo0x+Nakqse1G08czFIQTobfpyT11sLTU\n4ZfAcnhubdBviiX4Al3/YOgyhgku1xvJD42cz0XHZdAsL/CeR4Bs2IcysqDzC12O\niOYd+B9ElUiABxb4/DnLmgRGwy+6XW6E6hqhkZ42FwKBgQD4bfWXqcwJpGPUwfLj\nQ5hBijYXGHYcGv419YdgegINmtGbG7h8Raj+J8lnfQg/glBxoWwj5wY2sUMpTybo\nKLBvBBPeC0KMC/NarUsqPjQpKs78PfeHj7DXkXqGKlbX3AyQHhA2EAS/M2G4dtM2\naxIqM0/KcAg4dk6W1nocuRriYwKBgQDmxtL8BE/VIn0ptJP/AWzIga2vNd2HsKh/\n85waNvxr2PmVdNjnLJGEARa96TsNf0tXJ8s7zFAQ4ZIhyvib0ThdpViigFL+CDhE\nhGax9hoNXvjSGvMYln/tULXDEyVa8hGySdRj8Kr4FcQm/tyb/rL47BppNRSdWVgp\nR2Y9OfhwQwKBgQDIh9H3g2sc2WJwKcJKqpRrSwpQaEFmfG941OFbAgFIRBEv2Bd5\n0K0RwsHzVFzlDuaqYnetH13HphylaqvoOHf6lNsIoCQucbMVHc8PoThvhouf1tFI\nzrcbuuWhCOoiwhAuAOZrDVEXmX0m7ludkJ4QDG065mXsVasoXKYjK1PFKwKBgEcg\nipCgJ5bSPW9oN6EF6GhYB5cT7AZRPW3KQJeX0O7QfgRBckS16NedmkvIIapETI09\nN5djnl3FmEuQClXEAzJhrtLO6EVhdS4w/JHm/xqV5eyj3775S85x7MOGGCJSr3+a\n37o5yAgUdVNrg8UUmEa+RlmcwZDJo7F9TxaZ0mePAoGBALZFoxEODNf/vJjcu0a/\nvpxZ991oqhh2+NbyI/PmOFNsqG0tcRbc8EXvPJ57ZCS9p7SIZelvJAK5hiBY7Tm7\n5QLhwYpyMLdhmfY6R2iHat3krb4K8DtVtLQl71ehDdk4aquYZ1QeE+uEnbRuogoW\ncjPDhrJDpBN372wUFElRiQXG\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-lez7l@coin-market-2020.iam.gserviceaccount.com",
+  "client_id": "107433792859202123482",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-lez7l%40coin-market-2020.iam.gserviceaccount.com"
+}
