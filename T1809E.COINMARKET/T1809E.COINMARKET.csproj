@@ -310,12 +310,14 @@
     <Compile Include="Migrations\202005301320287_ModifyModels.Designer.cs">
       <DependentUpon>202005301320287_ModifyModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006021338069_modifyPostModel.cs" />
+    <Compile Include="Migrations\202006021338069_modifyPostModel.Designer.cs">
+      <DependentUpon>202006021338069_modifyPostModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Coins\Coin.cs" />
-    <Compile Include="Models\Coins\CoinPrice.cs" />
-    <Compile Include="Models\Coins\CryptoCompareCoin.cs" />
+    <Compile Include="Models\Coins\CommonCoin.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Post.cs" />
@@ -425,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005301320287_ModifyModels.resx">
       <DependentUpon>202005301320287_ModifyModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006021338069_modifyPostModel.resx">
+      <DependentUpon>202006021338069_modifyPostModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

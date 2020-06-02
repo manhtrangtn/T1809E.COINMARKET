@@ -16,7 +16,6 @@ namespace T1809E.COINMARKET.Controllers
         {
             ViewBag.Title = "Home Page";
             _cryptoCompareService.CryptoCompareWebSocket();
-            _cloudFirestoreRepository.GetConnection();
             return View();
         }
     }

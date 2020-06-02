@@ -16,7 +16,9 @@ namespace T1809E.COINMARKET.Models
         public string PostedUser { get; set; }
         public virtual ApplicationUser User { get; set; }
         public string Content { get; set; }
-        public string Ranks { get; set; }
+        [ForeignKey("Rank")]
+        public int PostRank { get; set; }
+        public Rank Rank { get; set; }
         public PostStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

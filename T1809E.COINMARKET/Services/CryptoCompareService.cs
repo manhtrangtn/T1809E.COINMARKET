@@ -6,6 +6,7 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using Quobject.SocketIoClientDotNet.Client;
 using T1809E.COINMARKET.Models.Coins;
+using T1809E.COINMARKET.Respositories;
 using T1809E.COINMARKET.Utils;
 using WebSocketSharp;
 
@@ -14,6 +15,7 @@ namespace T1809E.COINMARKET.Services
     public class CryptoCompareService
     {
       public readonly CommonConst CommonConst = new CommonConst();
+      public readonly CloudFirestoreRepository CloudFirestoreRepository = new CloudFirestoreRepository();
       public void CryptoCompareWebSocket()
       {
         var socket = IO.Socket("https://streamer.cryptocompare.com/");
@@ -58,13 +60,14 @@ namespace T1809E.COINMARKET.Services
               //23 HIGHHOUR: 10113.21,
               //24 LOWHOUR: 10065.78,
 
-              CryptoCompareCoin coin = new CryptoCompareCoin()
+              CommonCoin coin = new CommonCoin()
               {
                 Symbol = coinInfo[2],
                 Timestamp = coinInfo[6],
                 CurrencySymbol = coinInfo[3],
                 Price = Convert.ToDouble(coinInfo[5])
               };
+              CloudFirestoreRepository.CreatOrUpdate(coin);
             }
             catch (Exception e)
             {
