@@ -32,6 +32,14 @@ namespace T1809E.COINMARKET.Models
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string Rank { get; set; }
+
+        public DateTime? Birthday { get; set; }
     }
 
     public class UserLoginInfoViewModel

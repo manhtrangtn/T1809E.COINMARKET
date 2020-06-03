@@ -25,6 +25,8 @@ namespace T1809E.COINMARKET.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+
 
         public AccountController()
         {
@@ -58,11 +60,17 @@ namespace T1809E.COINMARKET.Controllers
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
+            var user = db.Users.Find(User.Identity.GetUserId());
+
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Rank = user.Rank.Name,
+                Birthday = user.BirthDay
             };
         }
 
@@ -328,7 +336,7 @@ namespace T1809E.COINMARKET.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, RankId = 1};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -336,6 +344,8 @@ namespace T1809E.COINMARKET.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            var roleresult = UserManager.AddToRole(user.Id, "user");
 
             return Ok();
         }
