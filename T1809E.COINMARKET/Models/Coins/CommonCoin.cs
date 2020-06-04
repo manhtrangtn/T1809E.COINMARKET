@@ -18,5 +18,9 @@ namespace T1809E.COINMARKET.Models.Coins
         public string CurrencySymbol { get; set; }
         [FirestoreProperty]
         public double Price { get; set; }
+        [FirestoreProperty]
+        public double OpenPrice { get; set; }
+        [FirestoreProperty]
+        public double HighPrice { get; set; }
     }
 }

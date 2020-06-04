@@ -326,6 +326,7 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Respositories\CloudFirestoreRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\BinanceService.cs" />
     <Compile Include="Services\CryptoCompareService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\CommonConst.cs" />
