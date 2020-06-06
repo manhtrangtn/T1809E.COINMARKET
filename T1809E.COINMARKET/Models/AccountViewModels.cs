@@ -48,4 +48,5 @@ namespace T1809E.COINMARKET.Models
 
         public string ProviderKey { get; set; }
     }
+
 }

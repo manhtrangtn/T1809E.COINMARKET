@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -16,6 +18,7 @@ using Microsoft.Owin.Security.OAuth;
 using T1809E.COINMARKET.Models;
 using T1809E.COINMARKET.Providers;
 using T1809E.COINMARKET.Results;
+using T1809E.COINMARKET.Utils;
 
 namespace T1809E.COINMARKET.Controllers
 {
@@ -382,6 +385,46 @@ namespace T1809E.COINMARKET.Controllers
             }
             return Ok();
         }
+
+        // POST api/Account/ForgotPassword
+
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        public async Task<IHttpActionResult> ForgotPasswordAsync(ForgotPasswordModel model)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApplicationUser cUser = db.Users.Where(x => x.Email.Equals(model.Email)).FirstOrDefault();
+            if (cUser == null)
+            {
+                var responseMess = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                responseMess.Content = new StringContent("Email invalid!");
+                throw new HttpResponseException(responseMess);
+            }
+
+            var oldPass = cUser.PasswordHash;
+            var generate = "Team05@" + DateTime.Now.Millisecond.ToString();
+            var store = new UserStore<ApplicationUser>(db);
+            var manager = new UserManager<ApplicationUser>(store);
+            var newPasswordHash = manager.PasswordHasher.HashPassword(generate);
+            await store.SetPasswordHashAsync(cUser, newPasswordHash);
+            var result = await manager.UpdateAsync(cUser);
+
+            if (result.Succeeded)
+            {
+                var textSend = "your passowrd is " + generate + "\n you can login with this password and change new password you want to change!";
+                MailHelper.SendMail(model.Email, "generate new password", textSend);
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {
