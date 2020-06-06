@@ -136,7 +136,7 @@ namespace T1809E.COINMARKET.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -269,9 +269,9 @@ namespace T1809E.COINMARKET.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -339,7 +339,7 @@ namespace T1809E.COINMARKET.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, RankId = 1};
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, RankId = 1 };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -381,7 +381,7 @@ namespace T1809E.COINMARKET.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
@@ -392,7 +392,7 @@ namespace T1809E.COINMARKET.Controllers
         [Route("ForgotPassword")]
         public async Task<IHttpActionResult> ForgotPasswordAsync(ForgotPasswordModel model)
         {
-            
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
