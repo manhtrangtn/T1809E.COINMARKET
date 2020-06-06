@@ -18,6 +18,7 @@ namespace T1809E.COINMARKET.Models
         public string PostedUser { get; set; }
         [JsonIgnore]
         public virtual ApplicationUser User { get; set; }
+        public string Thumbnail { get; set; }
         public string Content { get; set; }
         [ForeignKey("Rank")]
         public int PostRank { get; set; }
