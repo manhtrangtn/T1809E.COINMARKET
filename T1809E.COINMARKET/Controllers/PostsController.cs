@@ -25,9 +25,9 @@ namespace T1809E.COINMARKET.Controllers
             List<Post> posts = null;
             string userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            if(user != null)
+            if (user != null)
             {
-                if(user.RankId == 2)
+                if (user.RankId == 2)
                 {
                     posts = db.Posts.Where(p => p.Status == PostStatus.ACTIVE).ToList();
                 }
@@ -53,7 +53,7 @@ namespace T1809E.COINMARKET.Controllers
                 return NotFound();
             }
 
-            if(user.RankId != post.PostRank && user.RankId != 2)
+            if (user.RankId != post.PostRank && user.RankId != 2)
             {
                 var responseMess = new HttpResponseMessage(HttpStatusCode.BadRequest);
                 responseMess.Content = new StringContent("Bad Request!");
