@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -17,8 +19,36 @@ namespace T1809E.COINMARKET.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.Rank).Include(p => p.User);
-            return View(posts.ToList());
+            return View();
+        }
+        // GET: Admin/Login
+        public ActionResult Login()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult DoLogin(string username, string password)
+        {
+            return View();
+        }
+
+        public ActionResult UserManagement()
+        {
+          return View(db.Users.OrderBy(u=>u.FirstName).ToList());
+        }
+
+        public ActionResult UpdateUser(int status, string userId, string adminId)
+        {
+          return Redirect("UserManagement");
+        }
+        public ActionResult Post()
+        {
+          return View();
+        }
+
+        public ActionResult AddPost()
+        {
+          return View();
         }
     }
 }
