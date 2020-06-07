@@ -340,7 +340,7 @@ namespace T1809E.COINMARKET.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, RankId = 1 };
-
+            user.CreatedAt = DateTime.Now;
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)

@@ -1,4 +1,10 @@
-﻿namespace T1809E.COINMARKET.Migrations
+﻿using System.Data;
+using System.Diagnostics;
+using Microsoft.AspNet.Identity.EntityFramework;
+using T1809E.COINMARKET.Models;
+using T1809E.COINMARKET.Utils;
+
+namespace T1809E.COINMARKET.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -7,6 +13,7 @@
 
     internal sealed class Configuration : DbMigrationsConfiguration<T1809E.COINMARKET.Models.ApplicationDbContext>
     {
+        private readonly CommonFunctions _commonFunctions = new CommonFunctions();
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
@@ -14,10 +21,42 @@
 
         protected override void Seed(T1809E.COINMARKET.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            Rank rank1 = new Rank()
+            {
+                Name = "normal"
+            };
+            Rank rank2 = new Rank()
+            {
+                Name = "vip"
+            };
+            IdentityRole role1 = new IdentityRole()
+            {
+                Name = "admin"
+            };
+            IdentityRole role2 = new IdentityRole()
+            {
+                Name = "user"
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            context.Ranks.AddOrUpdate(rank1);
+            context.Ranks.AddOrUpdate(rank2);
+            context.Roles.AddOrUpdate(role1);
+            context.Roles.AddOrUpdate(role2);
+
+            string filePath = "/Posts1.csv";
+            var postData = _commonFunctions.ReadCsvFile(filePath);
+            int index = 0;
+            var posts = (from row in postData.AsEnumerable()
+                         select new Post()
+                         {
+                             Id = Convert.ToInt32(row["Id"]),
+                             Title = Convert.ToString(row["Title"]),
+                             Content = Convert.ToString(row["Content"]),
+                             CreatedAt = Convert.ToDateTime(row["CreatedAt"]),
+                             PostedUser = "764c21ae-7394-4e69-9888-40c7b51ce615",
+                             Rank = index % 2 == 0 ? rank1 : rank2
+                         }).ToList();
+            posts.ForEach(post => context.Posts.AddOrUpdate(post));
         }
     }
 }

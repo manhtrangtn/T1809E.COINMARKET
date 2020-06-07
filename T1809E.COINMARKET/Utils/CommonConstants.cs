@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace T1809E.COINMARKET.Utils
 {
-    public class CommonConst
+    public class CommonConstants
     {
         
     }
