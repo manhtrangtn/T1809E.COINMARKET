@@ -43,16 +43,59 @@ namespace T1809E.COINMARKET.Controllers
         }
         public ActionResult Post()
         {
-          return View();
+            var posts = db.Posts.Include(p => p.Rank).Include(p => p.User);
+            return View(posts.ToList());
         }
-
+        
         public ActionResult AddPost()
         {
-          return View();
-        }
-        public ActionResult EditPost()
-        {
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name");
+            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName");
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Post([Bind(Include = "Id,Title,PostedUser,Thumbnail,Content,PostRank,Status,CreatedAt,UpdatedAt,DeletedAt")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Posts.Add(post);
+                db.SaveChanges();
+                return RedirectToAction("Post");
+            }
+
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
+            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
+            return View(post);
+        }
+        public ActionResult EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = db.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
+            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
+            return View(post);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost([Bind(Include = "Id,Title,PostedUser,Thumbnail,Content,PostRank,Status,CreatedAt,UpdatedAt,DeletedAt")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(post).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Post");
+            }
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
+            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
+            return View(post);
         }
     }
 }
