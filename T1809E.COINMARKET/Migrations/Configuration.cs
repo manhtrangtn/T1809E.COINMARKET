@@ -43,20 +43,20 @@ namespace T1809E.COINMARKET.Migrations
             context.Roles.AddOrUpdate(role1);
             context.Roles.AddOrUpdate(role2);
 
-            string filePath = "/Posts1.csv";
-            var postData = _commonFunctions.ReadCsvFile(filePath);
-            int index = 0;
-            var posts = (from row in postData.AsEnumerable()
-                         select new Post()
-                         {
-                             Id = Convert.ToInt32(row["Id"]),
-                             Title = Convert.ToString(row["Title"]),
-                             Content = Convert.ToString(row["Content"]),
-                             CreatedAt = Convert.ToDateTime(row["CreatedAt"]),
-                             PostedUser = "764c21ae-7394-4e69-9888-40c7b51ce615",
-                             Rank = index % 2 == 0 ? rank1 : rank2
-                         }).ToList();
-            posts.ForEach(post => context.Posts.AddOrUpdate(post));
+            // string filePath = "/Posts1.csv";
+            // var postData = _commonFunctions.ReadCsvFile(filePath);
+            // int index = 0;
+            // var posts = (from row in postData.AsEnumerable()
+            //              select new Post()
+            //              {
+            //                  Id = Convert.ToInt32(row["Id"]),
+            //                  Title = Convert.ToString(row["Title"]),
+            //                  Content = Convert.ToString(row["Content"]),
+            //                  CreatedAt = Convert.ToDateTime(row["CreatedAt"]),
+            //                  PostedUser = "764c21ae-7394-4e69-9888-40c7b51ce615",
+            //                  Rank = index % 2 == 0 ? rank1 : rank2
+            //              }).ToList();
+            // posts.ForEach(post => context.Posts.AddOrUpdate(post));
         }
     }
 }
