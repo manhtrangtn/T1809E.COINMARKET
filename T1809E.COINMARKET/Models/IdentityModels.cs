@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
@@ -58,6 +59,6 @@ namespace T1809E.COINMARKET.Models
         public System.Data.Entity.DbSet<T1809E.COINMARKET.Models.Post> Posts { get; set; }
 
         public System.Data.Entity.DbSet<T1809E.COINMARKET.Models.Rank> Ranks { get; set; }
-
+        public IEnumerable ApplicationUsers { get; internal set; }
     }
 }
