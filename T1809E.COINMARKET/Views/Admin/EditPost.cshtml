@@ -1,0 +1,180 @@
+﻿                    <!-- BEGIN PAGE HEAD-->
+<div class="page-head">
+    <!-- BEGIN PAGE TITLE -->
+    <div class="page-title">
+        <h1>
+            Edit Content
+
+        </h1>
+    </div>
+    <!-- END PAGE TITLE -->
+    <!-- BEGIN PAGE TOOLBAR -->
+    <div class="page-toolbar">
+        <!-- BEGIN THEME PANEL -->
+        <div class="btn-group btn-theme-panel">
+            <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-settings"></i>
+            </a>
+            <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <h3>HEADER</h3>
+                        <ul class="theme-colors">
+                            <li class="theme-color theme-color-default active" data-theme="default">
+                                <span class="theme-color-view"></span>
+                                <span class="theme-color-name">Dark Header</span>
+                            </li>
+                            <li class="theme-color theme-color-light " data-theme="light">
+                                <span class="theme-color-view"></span>
+                                <span class="theme-color-name">Light Header</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 seperator">
+                        <h3>LAYOUT</h3>
+                        <ul class="theme-settings">
+                            <li>
+                                Layout
+                                <select class="layout-option form-control input-small input-sm">
+                                    <option value="fluid" selected="selected">Fluid</option>
+                                    <option value="boxed">Boxed</option>
+                                </select>
+                            </li>
+                            <li>
+                                Header
+                                <select class="page-header-option form-control input-small input-sm">
+                                    <option value="fixed" selected="selected">Fixed</option>
+                                    <option value="default">Default</option>
+                                </select>
+                            </li>
+                            <li>
+                                Top Dropdowns
+                                <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
+                                    <option value="light">Light</option>
+                                    <option value="dark" selected="selected">Dark</option>
+                                </select>
+                            </li>
+                            <li>
+                                Sidebar Mode
+                                <select class="sidebar-option form-control input-small input-sm">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </li>
+                            <li>
+                                Sidebar Menu
+                                <select class="sidebar-menu-option form-control input-small input-sm">
+                                    <option value="accordion" selected="selected">Accordion</option>
+                                    <option value="hover">Hover</option>
+                                </select>
+                            </li>
+                            <li>
+                                Sidebar Position
+                                <select class="sidebar-pos-option form-control input-small input-sm">
+                                    <option value="left" selected="selected">Left</option>
+                                    <option value="right">Right</option>
+                                </select>
+                            </li>
+                            <li>
+                                Footer
+                                <select class="page-footer-option form-control input-small input-sm">
+                                    <option value="fixed">Fixed</option>
+                                    <option value="default" selected="selected">Default</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END THEME PANEL -->
+    </div>
+    <!-- END PAGE TOOLBAR -->
+</div>
+<!-- END PAGE HEAD-->
+<!-- BEGIN PAGE BREADCRUMB -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="coint_list.html">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span class="active">Content</span>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMB -->
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal form-row-seperated" action="#">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-shopping-cart"></i>Edit Content
+                    </div>
+                    <div class="actions btn-set">
+                        <button type="button" name="back" class="btn btn-secondary-outline">
+                            <i class="fa fa-angle-left"></i> Back
+                        </button>
+                        <button class="btn btn-secondary-outline">
+                            <i class="fa fa-reply"></i> Reset
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fa fa-check"></i> Save
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fa fa-check-circle"></i> Save & Continue Edit
+                        </button>
+                        <div class="btn-group">
+                            <a class="btn btn-success dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <i class="fa fa-share"></i> More
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <div class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;"> Duplicate </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"> Delete </a>
+                                </li>
+                                <li class="dropdown-divider"> </li>
+                                <li>
+                                    <a href="javascript:;"> Print </a>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tabbable-bordered">
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_general">
+                                <div class="form-body">
+                                    <div class="form-body">
+                                        <label>Title</label>
+                                        <div class="input-icon">
+                                            <input type="text" class="form-control" placeholder="Title">
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <label>Content</label>
+                                        <textarea class="form-control" rows="15"></textarea>
+                                    </div>
+                                    <div class="form-body">
+                                        <label>Rank</label>
+                                        <select class="form-control">
+                                            <option>Gold</option>
+                                            <option>Silver</option>
+                                            <option>Bronze</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
