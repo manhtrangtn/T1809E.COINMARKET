@@ -6493,6 +6493,8 @@
     <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Admin\Post.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\EditPost.cshtml" />
+    <Content Include="Views\Admin\AddPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

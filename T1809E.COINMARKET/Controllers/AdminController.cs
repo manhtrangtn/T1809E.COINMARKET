@@ -50,5 +50,9 @@ namespace T1809E.COINMARKET.Controllers
         {
           return View();
         }
+        public ActionResult EditPost()
+        {
+            return View();
+        }
     }
 }
