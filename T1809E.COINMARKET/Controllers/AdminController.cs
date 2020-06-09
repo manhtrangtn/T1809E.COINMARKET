@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 using T1809E.COINMARKET.Models;
 
 namespace T1809E.COINMARKET.Controllers
@@ -41,7 +42,7 @@ namespace T1809E.COINMARKET.Controllers
         {
           return Redirect("UserManagement");
         }
-        public ActionResult Post()
+        public ActionResult Post()  
         {
             var posts = db.Posts.Include(p => p.Rank).Include(p => p.User);
             return View(posts.ToList());
