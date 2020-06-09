@@ -51,7 +51,7 @@ namespace T1809E.COINMARKET.Controllers
         public ActionResult AddPost()
         {
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name");
-            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName");
+            
             return View();
         }
         [HttpPost]
@@ -66,7 +66,6 @@ namespace T1809E.COINMARKET.Controllers
             }
 
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
-            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
             return View(post);
         }
         public ActionResult EditPost(int? id)
@@ -81,7 +80,6 @@ namespace T1809E.COINMARKET.Controllers
                 return HttpNotFound();
             }
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
-            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
             return View(post);
         }
         [HttpPost]
@@ -95,7 +93,6 @@ namespace T1809E.COINMARKET.Controllers
                 return RedirectToAction("Post");
             }
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
-            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
             return View(post);
         }
     }
