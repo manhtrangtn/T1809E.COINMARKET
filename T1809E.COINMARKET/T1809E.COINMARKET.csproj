@@ -2465,6 +2465,7 @@
     <Content Include="Views\Admin\AddPost.cshtml" />
     <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200608232447 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200608234615 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200609194452 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

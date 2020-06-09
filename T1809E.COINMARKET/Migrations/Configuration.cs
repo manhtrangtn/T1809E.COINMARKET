@@ -22,45 +22,45 @@ namespace T1809E.COINMARKET.Migrations
 
         protected override void Seed(T1809E.COINMARKET.Models.ApplicationDbContext context)
         {
-            try
-            {
-                Rank rank1 = new Rank()
-                {
-                  Name = "normal"
-                };
-                Rank rank2 = new Rank()
-                {
-                  Name = "vip"
-                };
-                IdentityRole role1 = new IdentityRole()
-                {
-                  Name = "admin"
-                };
-                IdentityRole role2 = new IdentityRole()
-                {
-                  Name = "user"
-                };
-
-                context.Ranks.AddOrUpdate(rank1);
-                context.Ranks.AddOrUpdate(rank2);
-                context.Roles.AddOrUpdate(role1);
-                context.Roles.AddOrUpdate(role2);
-                context.SaveChanges();
-            }
-            catch (DbEntityValidationException e)
-            {
-              foreach (var eve in e.EntityValidationErrors)
-              {
-                Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                  eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                foreach (var ve in eve.ValidationErrors)
-                {
-                  Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                    ve.PropertyName, ve.ErrorMessage);
-                }
-              }
-              throw;
-            }
+            // try
+            // {
+            //     Rank rank1 = new Rank()
+            //     {
+            //       Name = "normal"
+            //     };
+            //     Rank rank2 = new Rank()
+            //     {
+            //       Name = "vip"
+            //     };
+            //     IdentityRole role1 = new IdentityRole()
+            //     {
+            //       Name = "admin"
+            //     };
+            //     IdentityRole role2 = new IdentityRole()
+            //     {
+            //       Name = "user"
+            //     };
+            //
+            //     context.Ranks.AddOrUpdate(rank1);
+            //     context.Ranks.AddOrUpdate(rank2);
+            //     context.Roles.AddOrUpdate(role1);
+            //     context.Roles.AddOrUpdate(role2);
+            //     context.SaveChanges();
+            // }
+            // catch (DbEntityValidationException e)
+            // {
+            //   foreach (var eve in e.EntityValidationErrors)
+            //   {
+            //     Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+            //       eve.Entry.Entity.GetType().Name, eve.Entry.State);
+            //     foreach (var ve in eve.ValidationErrors)
+            //     {
+            //       Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+            //         ve.PropertyName, ve.ErrorMessage);
+            //     }
+            //   }
+            //   throw;
+            // }
 
             // string filePath = "/Posts1.csv";
             // var postData = _commonFunctions.ReadCsvFile(filePath);
