@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
+using Google.Api;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -27,6 +28,7 @@ namespace T1809E.COINMARKET.Controllers
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
+        private const string InforRequiredRegisterSessionName = "inforRequireRegister";
         private ApplicationUserManager _userManager;
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -328,6 +330,100 @@ namespace T1809E.COINMARKET.Controllers
 
             return logins;
         }
+
+
+
+        // POST api/Account/RegisterV1
+        [AllowAnonymous]
+        [Route("RegisterV1")]
+        public async Task<IHttpActionResult> RegisterV1(RegisterBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ApplicationUser cUser = db.Users.Where(x => x.Email.Equals(model.Email)).FirstOrDefault();
+            if (cUser != null)
+            {
+                var responseMess = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                responseMess.Content = new StringContent("Email invalid!");
+                throw new HttpResponseException(responseMess);
+            }
+
+            var generate = DateTime.Now.Millisecond.ToString();
+            var inforRegisterInSession = new InforRegisterInSessionModel()
+            {
+                Email = model.Email,
+                Code = generate,
+                Password = model.Password,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                BirthDay = model.BirthDay,
+            };
+            HttpContext.Current.Session[InforRequiredRegisterSessionName] = inforRegisterInSession;
+
+            var textSend =  generate + " is your registration verification code";
+            MailHelper.SendMail(model.Email, "Registration verification code", textSend);
+
+            return Ok("Please check email and verify!");
+        }
+
+        // POST api/Account/ConfirmRegister
+        [AllowAnonymous]
+        [Route("ConfirmRegister")]
+        public async Task<IHttpActionResult> ConfirmRegister(ConfirmRegisterModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var responseMess = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            InforRegisterInSessionModel inforRegisterInSession = (InforRegisterInSessionModel)HttpContext.Current.Session[InforRequiredRegisterSessionName];
+
+            if(inforRegisterInSession == null)
+            {
+                responseMess.Content = new StringContent("Information invalid!");
+                throw new HttpResponseException(responseMess);
+            }
+
+            if (!inforRegisterInSession.Email.Equals(model.Email))
+            {
+                responseMess.Content = new StringContent("Email not match!");
+                throw new HttpResponseException(responseMess);
+            }
+
+            if (!inforRegisterInSession.Code.Equals(model.Code))
+            {
+                responseMess.Content = new StringContent("Code not match!");
+                throw new HttpResponseException(responseMess);
+            }
+
+            var user = new ApplicationUser() 
+            { 
+                UserName = inforRegisterInSession.Email, 
+                Email = inforRegisterInSession.Email, 
+                FirstName = inforRegisterInSession.FirstName,
+                LastName = inforRegisterInSession.LastName,
+                BirthDay = inforRegisterInSession.BirthDay,
+                RankId = 1, 
+            };
+             user.CreatedAt = DateTime.Now;
+
+            user.EmailConfirmed = true;
+            IdentityResult result = await UserManager.CreateAsync(user, inforRegisterInSession.Password);
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            var roleresult = UserManager.AddToRole(user.Id, "user");
+
+            return Ok("Registered successfully!");
+        }
+
+
 
         // POST api/Account/Register
         [AllowAnonymous]
