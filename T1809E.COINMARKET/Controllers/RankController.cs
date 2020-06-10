@@ -19,7 +19,7 @@ namespace T1809E.COINMARKET.Controllers
         // GET: api/Rank
         [Authorize]
         [HttpPut]
-        public async System.Threading.Tasks.Task<IHttpActionResult> UpdateRankAsync()
+        public async System.Threading.Tasks.Task<IHttpActionResult> UpdateRank()
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);

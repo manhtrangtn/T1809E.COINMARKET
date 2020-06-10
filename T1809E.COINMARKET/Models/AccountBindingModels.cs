@@ -48,6 +48,13 @@ namespace T1809E.COINMARKET.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime? BirthDay { get; set; }
+
+
+
     }
 
     public class RegisterExternalBindingModel
@@ -88,5 +95,26 @@ namespace T1809E.COINMARKET.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class InforRegisterInSessionModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Code { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime? BirthDay { get; set; }
+    }
+
+    public class ConfirmRegisterModel
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        public string Code { get; set; }
     }
 }
