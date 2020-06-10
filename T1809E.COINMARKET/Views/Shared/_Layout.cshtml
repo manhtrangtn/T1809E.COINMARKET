@@ -87,13 +87,13 @@
 
                         <li class="dropdown dropdown-user dropdown-dark">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <span class="username username-hide-on-mobile"> Nick </span>
+                                <span class="username username-hide-on-mobile"> @HttpContext.Current.User.Identity.Name </span>
                                 <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                                 <img alt="" class="img-circle" src="@Url.Content("~/Content/assets/layouts/layout4/img/avatar9.jpg")" />
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
-                                    <a href="page_user_login_1.html">
+                                    <a href="javascript: logout()">
                                         <i class="icon-key"></i> Log Out
                                     </a>
                                 </li>
@@ -130,7 +130,7 @@
                         <h3 class="uppercase">COINT</h3>
                     </li>
                     <li class="nav-item ">
-                        <a href="/Admin" class="nav-link nav-toggle">
+                        <a href="javascript: redirect('/Admin')" class="nav-link nav-toggle">
                             <i class="fa fa-bitcoin"></i>
                             <span class="title">Coint Table</span>
                             <span class="selected"></span>
@@ -138,7 +138,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="/Admin" class="nav-link ">
+                                <a href="javascript: redirect('/Admin')" class="nav-link ">
                                     <span class="title">Coint List</span>
                                 </a>
                             </li>
@@ -150,14 +150,14 @@
                         <h3 class="uppercase">USER</h3>
                     </li>
                     <li class="nav-item  ">
-                        <a href="/Admin/UserManagement" class="nav-link nav-toggle">
+                        <a href="javascript: redirect('/Admin/UserManagement')" class="nav-link nav-toggle">
                             <i class="icon-user"></i>
                             <span class="title">User</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="/Admin/UserManagement" class="nav-link ">
+                                <a href="javascript: redirect('/Admin/UserManagement')" class="nav-link ">
                                     <span class="title">User Management</span>
                                 </a>
                             </li>
@@ -174,7 +174,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="/Admin/Post" class="nav-link ">
+                                <a href="javascript: redirect('/Admin/Post')" class="nav-link ">
                                     <span class="title">Post Management</span>
                                 </a>
                             </li>
@@ -194,7 +194,7 @@
                         <h3 class="uppercase">ACTION</h3>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="javascript: logout()" class="nav-link">
                             <i class="icon-logout"></i>
                             <span class="title">Logout</span>
                         </a>
@@ -809,13 +809,13 @@
                             </div>
                         </div>
                     </div>
-</div>
-</div>
-</div>
-<!-- END QUICK SIDEBAR -->
-</div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
+                </div>
+            </div>
+        </div>
+        <!-- END QUICK SIDEBAR -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
     <div class="page-footer">
         <div class="page-footer-inner">
             <p class="copyright"> @DateTime.Now.Month/@DateTime.Now.Year © Team 05. T1809E. </p>
@@ -839,6 +839,7 @@
     <script src="@Url.Content("~/Content/assets/layouts/layout4/scripts/layout.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Content/assets/layouts/global/scripts/quick-sidebar.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Content/assets/layouts/global/scripts/quick-nav.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/assets/custom.js")" type="text/javascript"></script>
 </body>
 
 </html>

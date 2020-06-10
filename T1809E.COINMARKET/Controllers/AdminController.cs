@@ -10,9 +10,11 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
 using T1809E.COINMARKET.Models;
+using T1809E.COINMARKET.Utils;
 
 namespace T1809E.COINMARKET.Controllers
 {
+    [CustomAuthorization(Roles = "admin")]
     public class AdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -22,36 +24,25 @@ namespace T1809E.COINMARKET.Controllers
         {
             return View();
         }
-        // GET: Admin/Login
-        public ActionResult Login()
-        {
-            return PartialView();
-        }
-        [HttpPost]
-        public ActionResult DoLogin(string username, string password)
-        {
-            return View();
-        }
-
         public ActionResult UserManagement()
         {
-          return View(db.Users.OrderBy(u=>u.FirstName).ToList());
+            return View(db.Users.OrderBy(u => u.FirstName).ToList());
         }
 
         public ActionResult UpdateUser(int status, string userId, string adminId)
         {
-          return Redirect("UserManagement");
+            return Redirect("UserManagement");
         }
-        public ActionResult Post()  
+        public ActionResult Post()
         {
             var posts = db.Posts.Include(p => p.Rank).Include(p => p.User);
             return View(posts.ToList());
         }
-        
+
         public ActionResult AddPost()
         {
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name");
-            
+
             return View();
         }
         [HttpPost]

@@ -409,6 +409,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\CommonConstants.cs" />
     <Compile Include="Utils\CommonFunctions.cs" />
+    <Compile Include="Utils\CustomAuthorization.cs" />
     <Compile Include="Utils\MailHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -429,6 +430,7 @@
     <Content Include="Content\assets\apps\scripts\todo-2.min.js" />
     <Content Include="Content\assets\apps\scripts\todo.js" />
     <Content Include="Content\assets\apps\scripts\todo.min.js" />
+    <Content Include="Content\assets\custom.js" />
     <Content Include="Content\assets\global\css\components-md.css" />
     <Content Include="Content\assets\global\css\components-md.min.css" />
     <Content Include="Content\assets\global\css\components-rounded.css" />
@@ -2426,14 +2428,6 @@
     <Content Include="Content\sass\pages\profile.scss" />
     <Content Include="Content\sass\pages\search.scss" />
     <Content Include="Content\sass\pages\tasks.scss" />
-    <Content Include="Views\admin-dashboard\app_edit_content.html" />
-    <Content Include="Views\admin-dashboard\app_post_management.html" />
-    <Content Include="Views\admin-dashboard\coint_list.html" />
-    <Content Include="Views\admin-dashboard\layout_add_post.html" />
-    <Content Include="Views\admin-dashboard\layout_blank_page.html" />
-    <Content Include="Views\admin-dashboard\table_user.html" />
-    <Content Include="Views\admin-dashboard\user_login.html" />
-    <Content Include="Views\admin-dashboard\user_profile.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2457,7 +2451,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Admin\Post.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
