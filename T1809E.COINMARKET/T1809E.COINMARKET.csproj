@@ -2054,6 +2054,7 @@
     <Content Include="Content\assets\pages\scripts\ui-tree.min.js" />
     <Content Include="Content\assets\pages\scripts\widgets.js" />
     <Content Include="Content\assets\pages\scripts\widgets.min.js" />
+    <Content Include="Content\assets\Spinner-1s-200px.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -2460,6 +2461,9 @@
     <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200608232447 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200608234615 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\T1809ECOINMARKET20200609194452 - Web Deploy.pubxml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

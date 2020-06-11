@@ -20,7 +20,7 @@ namespace T1809E.COINMARKET.Utils
             else
             {
                 //logged and wihout the role to access it - redirect to the custom controller action
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Login" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Error" }));
             }
         }
     }

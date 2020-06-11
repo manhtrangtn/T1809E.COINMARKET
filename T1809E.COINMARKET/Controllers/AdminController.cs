@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 using T1809E.COINMARKET.Models;
 using T1809E.COINMARKET.Utils;
 
@@ -19,7 +16,6 @@ namespace T1809E.COINMARKET.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Admin
         public ActionResult Index()
         {
             return View();
@@ -33,32 +29,20 @@ namespace T1809E.COINMARKET.Controllers
         {
             return Redirect("UserManagement");
         }
+
+        public ActionResult ChangeUserStatus(UserStatus status, string userId)
+        {
+            db.Users.FirstOrDefault(u => u.Id.Equals(userId)).Status = status;
+            db.SaveChanges();
+            return Redirect("UserManagement");
+        }
+
         public ActionResult Post()
         {
             var posts = db.Posts.Include(p => p.Rank).Include(p => p.User);
             return View(posts.ToList());
         }
 
-        public ActionResult AddPost()
-        {
-            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name");
-
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Post([Bind(Include = "Id,Title,PostedUser,Thumbnail,Content,PostRank,Status,CreatedAt,UpdatedAt,DeletedAt")] Post post)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Posts.Add(post);
-                db.SaveChanges();
-                return RedirectToAction("Post");
-            }
-
-            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
-            return View(post);
-        }
         public ActionResult EditPost(int? id)
         {
             if (id == null)
@@ -71,7 +55,7 @@ namespace T1809E.COINMARKET.Controllers
                 return HttpNotFound();
             }
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
-            return View(post);
+            return View("Edit",post);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,12 +63,78 @@ namespace T1809E.COINMARKET.Controllers
         {
             if (ModelState.IsValid)
             {
+              post.UpdatedAt= DateTime.Now;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Post");
             }
             ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
             return View(post);
+        }
+
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = await db.Posts.FindAsync(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        public ActionResult AddPost()
+        {
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AddPost([Bind(Include = "Title,Thumbnail,Content,PostRank")] Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.CreatedAt = DateTime.Now;
+                post.PostedUser = User.Identity.GetUserId();
+                db.Posts.Add(post);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Post","Admin");
+            }
+
+            ViewBag.PostRank = new SelectList(db.Ranks, "Id", "Name", post.PostRank);
+            ViewBag.PostedUser = new SelectList(db.ApplicationUsers, "Id", "FirstName", post.PostedUser);
+            return View(post);
+        }
+
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = await db.Posts.FindAsync(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            Post post = await db.Posts.FindAsync(id);
+
+            post.DeletedAt = DateTime.Now;
+            post.Status = PostStatus.DELETED;
+            db.Entry(post).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("Post");
         }
     }
 }

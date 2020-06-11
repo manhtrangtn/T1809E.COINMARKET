@@ -30,7 +30,7 @@
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="coint_list.html">
+                <a href="/Admin">
                     <img src="@Url.Content("~/Content/assets/layouts/layout4/img/logo-light.png")" alt="logo" class="logo-default" />
                 </a>
                 <div class="menu-toggler sidebar-toggler">
@@ -130,7 +130,7 @@
                         <h3 class="uppercase">COINT</h3>
                     </li>
                     <li class="nav-item ">
-                        <a href="javascript: redirect('/Admin')" class="nav-link nav-toggle">
+                        <a href="/Admin" class="nav-link nav-toggle">
                             <i class="fa fa-bitcoin"></i>
                             <span class="title">Coint Table</span>
                             <span class="selected"></span>
@@ -138,7 +138,7 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="javascript: redirect('/Admin')" class="nav-link ">
+                                <a href="/Admin" class="nav-link ">
                                     <span class="title">Coint List</span>
                                 </a>
                             </li>
@@ -150,14 +150,15 @@
                         <h3 class="uppercase">USER</h3>
                     </li>
                     <li class="nav-item  ">
-                        <a href="javascript: redirect('/Admin/UserManagement')" class="nav-link nav-toggle">
+                        <a href="/Admin/UserManagement" class="nav-link nav-toggle">
                             <i class="icon-user"></i>
                             <span class="title">User</span>
                             <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="javascript: redirect('/Admin/UserManagement')" class="nav-link ">
+                                @* <a href="javascript: redirect('/Admin/UserManagement')" class="nav-link "> *@
+                                <a href="/Admin/UserManagement" class="nav-link ">
                                     <span class="title">User Management</span>
                                 </a>
                             </li>
@@ -167,6 +168,7 @@
                         <h3 class="uppercase">POST</h3>
                     </li>
                     <li class="nav-item  ">
+                        @* <a href="javascript: redirect('/Admin/Post')" class="nav-link nav-toggle"> *@
                         <a href="/Admin/Post" class="nav-link nav-toggle">
                             <i class="icon-docs"></i>
                             <span class="title">Post</span>
@@ -174,18 +176,9 @@
                         </a>
                         <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="javascript: redirect('/Admin/Post')" class="nav-link ">
+                                @* <a href="javascript: redirect('/Admin/Post')" class="nav-link "> *@
+                                <a href="/Admin/Post" class="nav-link ">
                                     <span class="title">Post Management</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="/Admin/EditPost" class="nav-link ">
-                                    <span class="title">Edit Post</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="/Admin/AddPost" class="nav-link ">
-                                    <span class="title">Add Post</span>
                                 </a>
                             </li>
                         </ul>

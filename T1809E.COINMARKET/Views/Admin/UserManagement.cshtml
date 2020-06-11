@@ -1,4 +1,5 @@
-﻿@using T1809E.COINMARKET.Models
+﻿@using Microsoft.AspNet.Identity
+@using T1809E.COINMARKET.Models
 @model IEnumerable<T1809E.COINMARKET.Models.ApplicationUser>
 
 @{
@@ -134,6 +135,7 @@
                             <th> Username </th>
                             <th> Email </th>
                             <th> Email Confirm </th>
+                            <th> Rank </th>
                             <th> Status </th>
                             <th> Joined </th>
                             <th> Actions </th>
@@ -161,6 +163,16 @@
                                     }
                                 </td>
                                 <td>
+                                    @if (m.Rank.Equals("vip"))
+                                    {
+                                        <span class="label label-sm label-danger"> @m.Rank.Name </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-sm label-info"> @m.Rank.Name </span>
+                                    }
+                                </td>
+                                <td>
                                     @if (m.Status.Equals(UserStatus.ACTIVE))
                                     {
                                         <span class="label label-sm label-success"> @m.Status </span>
@@ -176,64 +188,72 @@
                                 </td>
                                 <td class="center"> @m.CreatedAt </td>
                                 <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                            Actions
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-left" role="menu">
-                                            @if (m.Status.Equals(UserStatus.ACTIVE))
-                                            {
-                                                <li class="disabled">
-                                                    <a href="javascript:;">
-                                                        <i class="icon-action-redo"></i> Active
-                                                    </a>
+                                    @if (HttpContext.Current.User.Identity.GetUserId().Equals(m.Id))
+                                    {
+                                        <span class="label label-sm label-danger"> Current User </span>
+                                    }
+                                    else
+                                    {
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                Actions
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-left" role="menu">
+                                                @if (m.Status.Equals(UserStatus.ACTIVE))
+                                                {
+                                                    <li class="disabled">
+                                                        <a href="javascript:;">
+                                                            <i class="icon-action-redo"></i> Active
+                                                        </a>
 
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li class="">
-                                                    <a href="javascript:;">
-                                                        <i class="icon-action-redo"></i> Active
-                                                    </a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="">
+                                                        <a href="/Admin/ChangeUserStatus?status=@UserStatus.ACTIVE&userId=@m.Id">
+                                                            <i class="icon-action-redo"></i> Active
+                                                        </a>
 
-                                                </li>
-                                            }
-                                            @if (m.Status.Equals(UserStatus.DISABLED))
-                                            {
-                                                <li class="disabled">
-                                                    <a href="javascript:;">
-                                                        <i class="icon-ban"></i> Disable
-                                                    </a>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="icon-ban"></i> Disable
-                                                    </a>
-                                                </li>
-                                            }
-                                            @if (m.Status.Equals(UserStatus.DELETED))
-                                            {
-                                                <li class="disabled">
-                                                    <a href="javascript:;">
-                                                        <i class="icon-remove-sign"></i> Delete
-                                                    </a>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li>
-                                                    <a href="javascript:;">
-                                                        <i class="icon-remove-sign"></i> Delete
-                                                    </a>
-                                                </li>
-                                            }
-                                        </ul>
-                                    </div>
+                                                    </li>
+                                                }
+                                                @if (m.Status.Equals(UserStatus.DISABLED))
+                                                {
+                                                    <li class="disabled">
+                                                        <a href="javascript:;">
+                                                            <i class="icon-ban"></i> Disable
+                                                        </a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a href="/Admin/ChangeUserStatus?status=@UserStatus.DISABLED&userId=@m.Id">
+                                                            <i class="icon-ban"></i> Disable
+                                                        </a>
+                                                    </li>
+                                                }
+                                                @if (m.Status.Equals(UserStatus.DELETED))
+                                                {
+                                                    <li class="disabled">
+                                                        <a href="javascript:;">
+                                                            <i class="icon-remove-sign"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a href="/Admin/ChangeUserStatus?status=@UserStatus.DELETED&userId=@m.Id">
+                                                            <i class="icon-remove-sign"></i> Delete
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+
                                 </td>
                             </tr>
 

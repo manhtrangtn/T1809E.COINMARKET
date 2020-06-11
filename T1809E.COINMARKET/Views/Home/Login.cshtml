@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Metronic Admin Theme #4 | User Login 2</title>
+    <title>Login</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Preview page of Metronic Admin Theme #4 for " name="description" />
@@ -35,7 +35,7 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="coint_list.html">
-            <img src="@Url.Content("~/Content/assets/pages/img/logo-big-white.png")" style="height: 17px;" alt="" />
+            <img src="@Url.Content("~/Content/assets/pages/img/logo-big-white.png")" style="height: 17px;" />
         </a>
     </div>
     <!-- END LOGO -->
@@ -45,11 +45,12 @@
         <form >
             <div class="form-title">
                 <span class="form-title">Welcome.</span>
-                <span class="form-subtitle">Please login.</span>
+                <span class="form-subtitle">
+                    <img src="@Url.Content("~/Content/assets/Spinner-1s-200px.gif")" style="height: 35px;"  id="loading-image"/></span>
             </div>
-            <div class="alert alert-danger display-hide">
+            <div class="alert alert-danger display-hide" id="alert-login">
                 <button class="close" data-close="alert"></button>
-                <span> Enter any username and password. </span>
+                <span> Login failed, check your username, password! </span>
             </div>
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->

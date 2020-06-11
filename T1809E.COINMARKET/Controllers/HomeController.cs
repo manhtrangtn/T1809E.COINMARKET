@@ -16,16 +16,14 @@ namespace T1809E.COINMARKET.Controllers
             return Redirect("Admin");
         }
 
-        // GET: Admin/Login
         public ActionResult Login()
         {
           return PartialView();
         }
-        [HttpPost]
-        public ActionResult DoLogin(string username, string password)
-        {
-          return View();
-        }
 
+        public ActionResult Error()
+        {
+          return PartialView();
+        }
     }
 }

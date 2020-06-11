@@ -1,4 +1,6 @@
-﻿<!-- BEGIN PAGE HEAD-->
+﻿@using T1809E.COINMARKET.Models
+@model IEnumerable<T1809E.COINMARKET.Models.Post>
+<!-- BEGIN PAGE HEAD-->
 <div class="page-head">
     <!-- BEGIN PAGE TITLE -->
     <div class="page-title">
@@ -8,87 +10,6 @@
         </h1>
     </div>
     <!-- END PAGE TITLE -->
-    <!-- BEGIN PAGE TOOLBAR -->
-    <div class="page-toolbar">
-        <!-- BEGIN THEME PANEL -->
-        <div class="btn-group btn-theme-panel">
-            <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-settings"></i>
-            </a>
-            <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <h3>HEADER</h3>
-                        <ul class="theme-colors">
-                            <li class="theme-color theme-color-default active" data-theme="default">
-                                <span class="theme-color-view"></span>
-                                <span class="theme-color-name">Dark Header</span>
-                            </li>
-                            <li class="theme-color theme-color-light " data-theme="light">
-                                <span class="theme-color-view"></span>
-                                <span class="theme-color-name">Light Header</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12 seperator">
-                        <h3>LAYOUT</h3>
-                        <ul class="theme-settings">
-                            <li>
-                                Layout
-                                <select class="layout-option form-control input-small input-sm">
-                                    <option value="fluid" selected="selected">Fluid</option>
-                                    <option value="boxed">Boxed</option>
-                                </select>
-                            </li>
-                            <li>
-                                Header
-                                <select class="page-header-option form-control input-small input-sm">
-                                    <option value="fixed" selected="selected">Fixed</option>
-                                    <option value="default">Default</option>
-                                </select>
-                            </li>
-                            <li>
-                                Top Dropdowns
-                                <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-                                    <option value="light">Light</option>
-                                    <option value="dark" selected="selected">Dark</option>
-                                </select>
-                            </li>
-                            <li>
-                                Sidebar Mode
-                                <select class="sidebar-option form-control input-small input-sm">
-                                    <option value="fixed">Fixed</option>
-                                    <option value="default" selected="selected">Default</option>
-                                </select>
-                            </li>
-                            <li>
-                                Sidebar Menu
-                                <select class="sidebar-menu-option form-control input-small input-sm">
-                                    <option value="accordion" selected="selected">Accordion</option>
-                                    <option value="hover">Hover</option>
-                                </select>
-                            </li>
-                            <li>
-                                Sidebar Position
-                                <select class="sidebar-pos-option form-control input-small input-sm">
-                                    <option value="left" selected="selected">Left</option>
-                                    <option value="right">Right</option>
-                                </select>
-                            </li>
-                            <li>
-                                Footer
-                                <select class="page-footer-option form-control input-small input-sm">
-                                    <option value="fixed">Fixed</option>
-                                    <option value="default" selected="selected">Default</option>
-                                </select>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END THEME PANEL -->
-    </div>
     <!-- END PAGE TOOLBAR -->
 </div>
 <!-- END PAGE HEAD-->
@@ -108,20 +29,20 @@
 </ul>
 <!-- END PAGE BREADCRUMB -->
 <!-- BEGIN PAGE BASE CONTENT -->
-<div class="search-page search-content-2">
-    <div class="search-bar bordered">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                        <button class="btn blue uppercase bold" type="button">Search</button>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-    </div>
+@* <div class="search-page search-content-2"> *@
+@*     <div class="search-bar bordered"> *@
+@*         <div class="row"> *@
+@*             <div class="col-md-12"> *@
+@*                 <div class="input-group"> *@
+@*                     <input type="text" class="form-control" placeholder="Search for..."> *@
+@*                     <span class="input-group-btn"> *@
+@*                         <button class="btn blue uppercase bold" type="button">Search</button> *@
+@*                     </span> *@
+@*                 </div> *@
+@*             </div> *@
+@* *@
+@*         </div> *@
+@*     </div> *@
     <div class="row">
 
         <div class="col-md-12">
@@ -143,10 +64,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group">
-                                            <button id="sample_editable_1_new" class="btn sbold green">
+                                            <a id="" href="/Admin/AddPost" class="btn sbold green">
                                                 Add New
                                                 <i class="fa fa-plus"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -154,534 +75,81 @@
                             <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
-                                                <span></span>
-                                            </label>
-                                        </th>
                                         <th> Title </th>
                                         <th> Content </th>
-                                        <th> Status </th>
-                                        <th> Joined </th>
                                         <th> Rank </th>
+                                        <th> Status </th>
+                                        <th> Created Date </th>
+                                        <th> Actions </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin </td>
-                                        <td>
-                                            
-                                                Bitcoin (symbols: BTC, XBT, BitcoinSign.svg) is a cryptocurrency, invented by Satoshi Nakamoto in the form of open source software [9] since 2009. [2] Bitcoin can be exchanged directly with an Internet-connected device without going through an intermediary financial institution. [10]
+                                    @foreach (var post in Model)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td style="font-weight: bold;"> @post.Title </td>
+                                            <td>
+                                                @post.Content
+                                            </td>
+                                            <td>
+                                                <span class="label label-sm label-success"> @post.Rank.Name </span>
+                                            </td>
+                                            <td>
+                                                @if (@post.Status.Equals(PostStatus.ACTIVE))
+                                                {
+                                                    <span class="label label-sm label-success"> @post.Status </span>
+                                                }
+                                                else if (@post.Status.Equals(PostStatus.DISABLE))
+                                                {
+                                                    <span class="label label-sm label-warning"> @post.Status </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="label label-sm label-danger"> @post.Status </span>
+                                                }
+                                            </td>
+                                            <td class="center"> @post.CreatedAt </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                                        Actions
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-left" role="menu">
+                                                        
+                                                        @if (post.Status.Equals(PostStatus.DELETED))
+                                                        {
+                                                            <li class="disabled">
+                                                                <a href="/Admin/Delete?id=@post.Id">
+                                                                    <i class="icon-star"></i> Delete
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/Admin/EditPost?id=@post.Id">
+                                                                    <i class="icon-diamond"></i> Edit
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                        else
+                                                        {
+                                                            
+                                                            <li>
+                                                                <a href="/Admin/Delete?id=@post.Id">
+                                                                    <i class="icon-star"></i> Delete
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/Admin/EditPost?id=@post.Id">
+                                                                    <i class="icon-diamond"></i> Edit
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
 
-                                                Bitcoin behaves differently than typical currencies: no central bank manages it and the system operates on a peer-to-peer network protocol on the Internet. [11] Bitcoin supply is automatic, limited, and is divided on a predetermined schedule based on algorithms. Bitcoin is issued to Bitcoin miners to pay for the verification of Bitcoin transactions and record them in the ledger distributed in the peer-to-peer network, through blockchain technology. This ledger uses Bitcoin as an accounting unit. Each bitcoin can be broken down to 100 million smaller units called satoshi. [5]
-
-                                                Transaction fees may apply for new transactions depending on network resources. In addition to transaction fees, miners are paid for the creation of blocks containing transaction logs. Every 10 minutes, a new block is created with an amount of Bitcoin allocated. The number of bitcoins allocated to each block depends on the network uptime. In May 2020, 6.25 bitcoins were allocated for each new block. The inflation rate will be halved to 3,125 bitcoins around May 2024 [12] and will continue to halve every four years until a total of 21 million Bitcoins are issued in 2140. [2] ] [13] In addition to mining Bitcoin, users can get Bitcoin by exchanging for Bitcoin when selling other currencies, goods, or services.
-
-                                                Bitcoin is the most typical, first, and most widely used cryptocurrency in electronic commerce. [4] [14] Businesses tend to want to pay with Bitcoin to minimize costs. By July 2018, Bitcoin's base currency was valued at more than $ 109 billion - the largest market value cryptocurrency. [15] The huge fluctuations in the value of each bitcoin created criticism of Bitcoin's economic suitability as a currency. [16]
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12 Jan 2012 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin withdrew, ‘bloody’ market </td>
-                                        <td>
-                                            
-                                                The most popular and valuable virtual currency has seen a strong pullback in the past few days, falling from a peak of over $ 9,800 to a low of $ 8,707 in the past 24 hours. Earlier, many attempts to surpass the $ 10,000 threshold of Bitcoin failed, weakening the upward trend. Statistics showed that in the last 24 hours, the price of Bitcoin traded between $ 8,707 - $ 9,010. Trading volume is about 29.6 billion USD, market capitalization is 162.4 billion USD.
-
-                                                6:00 pm on 27/5, Bitcoin price on CoinDesk stood at 8,843 USD, down 0.8%, equivalent to each coin losing 68 USD.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-warning"> Disable </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin is burning, the $ 9,000 threshold is breached </td>
-                                        <td>
-                                            
-                                                At 6:30 on May 25, the price of Bitcoin on CoinDesk decreased by 4.8 percent to $ 8,777 per BTC, equivalent to a loss of $ 436 per coin.
-
-                                                The amount of virtual money traded on time is about 32 billion USD, capitalization at 161.7 billion USD.
-
-                                                Smaller virtual currencies also plummeted. Specifically, Ethereum lost 2.9% to $ 202, capitalization recorded at $ 22.5 billion.
-
-                                                Ripple is trading at $ 0.195, down 1.8% in value, capitalization is only $ 8.6 billion.
-
-                                                The two virtual currencies of Bitcoin family, Bitcoin SV and Bitcoin Cash lost 4.3% of their value, respectively worth USD 185.1 and USD 224.8.
-
-                                                Litecoin also plunged 3.6% to 42.4 USD.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin "luck" in the midst of crisis, should buy? </td>
-                                        <td>
-                                            
-                                                The bitcoin price soared this week and unexpectedly exceeded the $ 10,000 threshold on the morning of May 7. This sudden upheaval pushed bitcoin's value up nearly 40% compared to January 1 and brought the digital currency outside the group affected by Covid-19, one of the active assets. best activity today.
-
-                                                However, due to the bitcoin halving event (also known as split bitcoin, which halves the amount of bitcoins each miner receives after digging 1 block), many experts predict this may be the "abyss". for bitcoin investors.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-danger"> Deleted </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin exceeds 10,000 USD, the price collapse is imminent? </td>
-                                        <td>
-                                            
-                                                Increasing 2.2%, Bitcoin touched $ 10,015 during trading on 8/5 in Asian markets. This is the first time Bitcoin price has reached 5 digits since February 24. The rally took place just before the Halving event, the term describing the annual amount of Bitcoin mined. It officially takes place on 12/5 to.
-
-                                                The current price of Bitcoin is half that of the December 2017 peak. Over the past 2 years, it has been a stormy day with the world's most valuable digital currency with prolonged price fluctuations. Currently, the value of cryptocurrencies remains one of the biggest controversies. Many reputable investors are skeptical about this type of asset.
-
-                                                Lennard Neo, lead researcher at Stack AM Pte, warned: "Bitcoin's rally may be short-term. We believe that the digital currency will depreciate after investors start taking profits. In the long run, we expect Bitcoin to increase significantly by the end of 2020 and early 2021. "
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin attracted a spike in interest amidst the Covid-19 crisis </td>
-                                        <td>
-                                            
-                                                Like any other industry in the world, the cryptocurrency market is inevitably affected by the pandemic. However, what Corona virus brings to this field is not entirely negative.
-
-                                                Bitcoin price plummeted in March but is now back to pre-plummeting levels. This situation of change is typical in the midst of a financial crisis when some assets increase, or decrease in a short time.
-
-                                                `` In the first few weeks of the financial crisis, based on liquidity or solvency, investors, '' said Jeff Dorman, chief investment officer at Arca-oriented investment management firm. Investors often rush to sell things they don't really trust and then buy anything they trust in the next few weeks.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin doubled in just over 1 month </td>
-                                        <td>
-                                            
-                                                Updated at 8am this morning (Vietnam time), Bitcoin price on CoinDesk stood at USD 7,741.91, an increase of more than 100% compared to USD 3,867 on March 13. The trading volume was recorded at 18.35 million USD, the total market capitalization reached over 142 billion USD.
-
-                                                Many other virtual currencies also increased in price this morning such as Stellar up 8.09%, Lisk up 7.37%, TRON up 2.36%, Monero up 0.98%, ...
-
-                                                On the morning of April 28, Bitcoin once rose to nearly $ 7,800 - the highest level since "Dark Thursday" on March 12 when the price dropped from $ 7,950 to $ 4,700 due to the Covid pandemic. -19 wreaks havoc on most markets.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-danger"> Deleted </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> 85% of the world's Bitcoin has been mined </td>
-                                        <td>
-                                            
-                                                According to CoinMarketCap, 17,850,600 Bitcoin has been successfully mined by mining machines worldwide. Thus, the world only has about 3 million VND that has not been mined until it reaches the limit of 21 million Bitcoin.
-
-                                                The limit to 21 million is thought to be aimed at avoiding inflation. However, in an email leak between Bitcoin creator Satoshi Nakamoto and developer MIKe Hearn last year, the simultaneous restriction will increase the value of the virtual currency over time.
-
-                                                According to StackExchange, Bitcoin coins are a reward for miner network participants. The software stipulates that in about 10 minutes, a new block will be added to the blockchain, corresponding to a certain amount of Bitcoin generated.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Why only 21 million bitcoins exist? </td>
-                                        <td>
-                                            
-                                                Satoshi Nakamoto is known as the "father" of Bitcoin, the first cryptocurrency in the world. One of the things that many people wonder is why Bitcoin is limited to about 21 million units.
-
-                                                Some argue that limiting the number of Bitcoin issued will help the currency avoid inflation. However, the real reason for this limitation was revealed in an email between Satoshi Nakamoto and developer MIKe Hearn.
-
-                                                According to an email shared by Hearn, Nakamoto initially estimated that 0.001 BTC would be worth 1 euro.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-danger"> Deleted </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Did Libra waves create momentum for Bitcoin to return to the peak? </td>
-                                        <td>
-                                            
-                                                At noon on June 23, the price of Bitcoin on coinmarketcap.com was approximately $ 10,700. This price increased by 290% compared to the lowest price of March 3.1919 USD.
-
-                                                Not only Bitcoin, other virtual currencies, particularly in the "big six" group, such as Litecoin, XRP, Ethereum, Bitcoin Cash, EOS, have increased sharply in recent days. The value of virtual currencies on this floor has nearly reached $ 330 billion.
-
-                                                Particularly with Bitcoin, on June 22, there was a time when its price exceeded $ 11,000, but then corrected to above $ 10,700 at the end of the day. In the past week alone from June 15-22, the price of Bitcoin increased by approximately $ 3,000 with an increase of about 33%.
-
-                                                Factors supporting the price increase of Bitcoin in particular and the virtual currency market in general have been identified from the beginning is the official birth of the virtual currency project Libra of the "big" Facebook with ambition. establishing a separate monetary system in the future can operate independently, even compete and dominate the traditional financial market.
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Outperforming ”Bitcoin, Litecoin has risen more than 330% since the beginning of the year </td>
-                                        <td>
-                                            
-                                                According to Bloomberg, the spectacular growth of Litecoin is due in part to plans to halve the supply of the virtual currency. If miners currently receive 25 new Litecoin units per block, from August 6, they will only receive 12.5 units.
-
-                                                This reduction usually takes place about every 4 years and at each previous time, the price of Litecoin increased sharply. In 2015, when Litecoin cut a supply in half, the value of the virtual currency also increased by about 60% in the previous 3 months, according to data from CoinMarketCap. Not only Litecoin, Bitcoin is also expected to conduct half of the supply by May 2020.
-
-                                                "Every time the event happens with Bitcoin or Litecoin, the prices of these virtual currencies increase significantly," said Mati Greenspan, senior market analyst at eToro exchange. "This is quite normal in the cryptocurrency market."
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-warning"> Disable </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="checkboxes" value="1" />
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td style="font-weight: bold;"> Bitcoin price increased by over 60% in May </td>
-                                        <td>
-                                            
-                                                According to CNBC, Bitcoin's price has risen more than 60% in May, sometimes peaking at $ 9,084 on Thursday. Meanwhile, the S&P 500 index of the US stock market fell about 5% in the month.
-
-                                                1 month ago, the price of the largest digital currency in the world stood at about 5,200 USD. Compared to the beginning of the year, Bitcoin price has now more than doubled.
-
-                                                At more than 9am on Friday in Vietnam time, the price of Bitcoin according to data on Coinmarketcap.com stood at $ 8,343, down about 3.7% compared to 24 hours ago.
-
-                                                According to Bart Smith, head of digital assets at Susquehanna, the rising price of cryptocurrencies is a result of several influencing factors, including an escalating trade war between the US and China.
-
-                                                "This conflict has caused the yuan to depreciate to a six-month low," said Mr. Smith, and said the level of interest in Bitcoin from Chinese investors has increased sharply. "Bitcoin has been used as a hedge, or as a way to transfer capital out of China."
-                                            
-                                        </td>
-                                        <td>
-                                            <span class="label label-sm label-success"> Active </span>
-                                        </td>
-                                        <td class="center"> 12.12.2011 </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                                    Ranks
-                                                    <i class="fa fa-angle-down"></i>
-                                                </button>
-                                                <ul class="dropdown-menu pull-left" role="menu">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-star"></i> Normal
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="icon-diamond"></i> Vip
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
